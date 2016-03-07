@@ -16,9 +16,7 @@
     <context:annotation-config/>
     <context:component-scan base-package="cn.nlsde.controller"></context:component-scan>
     <mvc:annotation-driven/>
-    <mvc:interceptors>
-        <bean id="loginInterceptor" class="cn.nlsde.web.AuthorizateInterceptor"/>
-    </mvc:interceptors>
+
     <!-- 静态资源访问-->
     <!--以下两种方式都可以用于对静态资源的访问-->
     <!--<mvc:resources mapping="/res/**" location="/res/"/>-->
@@ -28,11 +26,5 @@
           p:viewClass="org.springframework.web.servlet.view.JstlView"
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp">
-    </bean>
-
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <property name="defaultEncoding" value="utf-8"/>
-        <property name="maxUploadSize" value="5400000"/>
-        <property name="maxUploadSizePerFile" value="102400"/>
     </bean>
 </beans>

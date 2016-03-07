@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.deser.Deserializers;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,11 +19,11 @@ import java.io.Serializable;
 @Entity
 @NoArgsConstructor
 public class Person extends BaseEntity {
-
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private String id;
+
     private String userName;
     private String password;
 }

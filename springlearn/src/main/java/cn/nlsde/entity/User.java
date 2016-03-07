@@ -3,6 +3,7 @@ package cn.nlsde.entity;
 import cn.nlsde.common.BaseEntity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.builder.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -14,10 +15,8 @@ import javax.persistence.*;
 @Data
 @Entity
 @NoArgsConstructor
-@NamedQueries({
-        @NamedQuery(name = "User.findUser", query = "select u from User u where id = :id")
-
-})
+@NamedQueries({@NamedQuery(name = "getUser",
+        query = "select u from User u where u.id = :id")})
 public class User extends BaseEntity {
 
     @Id

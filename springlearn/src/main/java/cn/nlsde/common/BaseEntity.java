@@ -1,15 +1,17 @@
 package cn.nlsde.common;
 
-import org.apache.commons.lang3.builder.*;
+import org.apache.commons.lang3.builder.CompareToBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
-import javax.persistence.MappedSuperclass;
+import java.awt.*;
 import java.io.Serializable;
+import java.util.Comparator;
 
 /**
  * Created by zhangwj on 16/3/2.
  */
-
-@MappedSuperclass
 public class BaseEntity implements Comparable, Serializable {
 
 
@@ -25,7 +27,7 @@ public class BaseEntity implements Comparable, Serializable {
 
     @Override
     public String toString() {
-        return ReflectionToStringBuilder.toString(this, ToStringStyle.JSON_STYLE);
+        return ReflectionToStringBuilder.toString(this);
     }
 
     public int compareTo(Object o) {
