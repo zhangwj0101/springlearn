@@ -4,9 +4,7 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.LockMode;
-import org.hibernate.Session;
 import org.hibernate.criterion.*;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 import org.springframework.orm.hibernate4.HibernateTemplate;
@@ -22,7 +20,7 @@ import java.util.List;
 /**
  * Created by zhangwj on 16/3/2.
  */
-public class GenericHibernateDao<T extends Serializable, PK extends Serializable>
+public abstract class GenericHibernateDao<T extends Serializable, PK extends Serializable>
         extends HibernateDaoSupport implements GenericDao<T, PK> {
 
     @Autowired
@@ -53,7 +51,6 @@ public class GenericHibernateDao<T extends Serializable, PK extends Serializable
     }
 
     // -------------------- 基本检索、增加、修改、删除操作 --------------------
-
     // 根据主键获取实体。如果没有相应的实体，返回 null。
     public T get(PK id) {
         return getHibernateTemplate().get(entityClass, id);
@@ -87,7 +84,6 @@ public class GenericHibernateDao<T extends Serializable, PK extends Serializable
         return getHibernateTemplate().loadAll(entityClass);
     }
 
-
     // 更新实体
     public void update(T entity) {
         getHibernateTemplate().update(entity);
@@ -103,7 +99,6 @@ public class GenericHibernateDao<T extends Serializable, PK extends Serializable
     public void save(T entity) {
         getHibernateTemplate().save(entity);
     }
-
 
     // 增加或更新实体
     public void saveOrUpdate(T entity) {
@@ -131,14 +126,12 @@ public class GenericHibernateDao<T extends Serializable, PK extends Serializable
         this.deleteWithLock(this.load(id), lock);
     }
 
-
     // 删除集合中的全部实体
     public void deleteAll(Collection<T> entities) {
         getHibernateTemplate().deleteAll(entities);
     }
 
     // -------------------- HSQL ----------------------------------------------
-
     // 使用HSQL语句直接增加、更新、删除实体
     public int bulkUpdate(String queryString) {
         return getHibernateTemplate().bulkUpdate(queryString);
@@ -163,7 +156,7 @@ public class GenericHibernateDao<T extends Serializable, PK extends Serializable
     public List findByNamedParam(String queryString, String[] paramNames,
                                  Object[] values) {
         return getHibernateTemplate().findByNamedParam(queryString, paramNames,
-                values);
+                                                       values);
     }
 
     // 使用命名的HSQL语句检索数据
@@ -180,7 +173,7 @@ public class GenericHibernateDao<T extends Serializable, PK extends Serializable
     public List findByNamedQueryAndNamedParam(String queryName,
                                               String[] paramNames, Object[] values) {
         return getHibernateTemplate().findByNamedQueryAndNamedParam(queryName,
-                paramNames, values);
+                                                                    paramNames, values);
     }
 
     // 使用HSQL语句检索数据，返回 Iterator
@@ -193,14 +186,12 @@ public class GenericHibernateDao<T extends Serializable, PK extends Serializable
         return getHibernateTemplate().iterate(queryString, values);
     }
 
-
     // 关闭检索返回的 Iterator
     public void closeIterator(Iterator it) {
         getHibernateTemplate().closeIterator(it);
     }
 
     // -------------------------------- Criteria ------------------------------
-
     // 创建与会话无关的检索标准
     public DetachedCriteria createDetachedCriteria() {
         return DetachedCriteria.forClass(this.entityClass);
@@ -220,7 +211,7 @@ public class GenericHibernateDao<T extends Serializable, PK extends Serializable
     public List findByCriteria(DetachedCriteria criteria, int firstResult,
                                int maxResults) {
         return getHibernateTemplate().findByCriteria(criteria, firstResult,
-                maxResults);
+                                                     maxResults);
     }
 
     // 使用指定的实体及属性检索（满足除主键外属性＝实体值）数据
@@ -254,7 +245,7 @@ public class GenericHibernateDao<T extends Serializable, PK extends Serializable
                 Object value = PropertyUtils.getProperty(entity, property);
                 if (value instanceof String) {
                     criteria.add(Restrictions.like(property, (String) value,
-                            MatchMode.ANYWHERE));
+                                                   MatchMode.ANYWHERE));
                     criteria.addOrder(Order.asc(property));
                 } else {
                     criteria.add(Restrictions.eq(property, value));
@@ -277,16 +268,17 @@ public class GenericHibernateDao<T extends Serializable, PK extends Serializable
     // 使用指定的检索标准检索数据，返回指定统计值(max,min,avg,sum)
     public Object getStatValue(DetachedCriteria criteria, String propertyName,
                                String StatName) {
-        if (StatName.toLowerCase().equals("max"))
+        if (StatName.toLowerCase().equals("max")) {
             criteria.setProjection(Projections.max(propertyName));
-        else if (StatName.toLowerCase().equals("min"))
+        } else if (StatName.toLowerCase().equals("min")) {
             criteria.setProjection(Projections.min(propertyName));
-        else if (StatName.toLowerCase().equals("avg"))
+        } else if (StatName.toLowerCase().equals("avg")) {
             criteria.setProjection(Projections.avg(propertyName));
-        else if (StatName.toLowerCase().equals("sum"))
+        } else if (StatName.toLowerCase().equals("sum")) {
             criteria.setProjection(Projections.sum(propertyName));
-        else
+        } else {
             return null;
+        }
         List list = this.findByCriteria(criteria, 0, 1);
         return list.get(0);
     }
@@ -306,6 +298,5 @@ public class GenericHibernateDao<T extends Serializable, PK extends Serializable
     public void flush() {
         getHibernateTemplate().flush();
     }
-
 
 }
