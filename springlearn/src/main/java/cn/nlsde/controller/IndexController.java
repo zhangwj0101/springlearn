@@ -1,7 +1,6 @@
 package cn.nlsde.controller;
 
 import cn.nlsde.annotation.FreeAccess;
-import cn.nlsde.annotation.LoginRequired;
 import cn.nlsde.common.SessionBean;
 import cn.nlsde.constant.Constants;
 import cn.nlsde.entity.Address;
@@ -27,7 +26,6 @@ import java.util.UUID;
  */
 @Controller
 @RequestMapping("/index")
-@LoginRequired
 public class IndexController {
     Logger logger = LoggerFactory.getLogger(IndexController.class);
 
@@ -36,7 +34,6 @@ public class IndexController {
 
     //    @ResponseBody
     @RequestMapping(value = "/test")
-    @LoginRequired
     public String test(HttpServletRequest request) {
         Map<String, Object> maps = new HashMap<>();
         logger.info("user = {}", request.getSession().getAttribute(Constants.SESSION_BEAN));

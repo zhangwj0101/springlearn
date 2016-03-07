@@ -52,8 +52,7 @@ public class AuthorizateInterceptor extends HandlerInterceptorAdapter {
         //对接口的访问权限过滤
         if (handlerMethod.getMethod().isAnnotationPresent(PrivilegeRequired.class)) {
             privileges = handlerMethod.getMethod().getAnnotation(PrivilegeRequired.class).privileges();
-        }
-        if (handlerMethod.getBean().getClass().isAnnotationPresent(PrivilegeRequired.class)) {
+        } else if (handlerMethod.getBean().getClass().isAnnotationPresent(PrivilegeRequired.class)) {
             privileges = handlerMethod.getBean().getClass().getAnnotation(PrivilegeRequired.class).privileges();
         }
 
