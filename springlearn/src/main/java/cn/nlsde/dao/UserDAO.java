@@ -1,6 +1,5 @@
 package cn.nlsde.dao;
 
-import cn.nlsde.common.GenericDao;
 import cn.nlsde.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
