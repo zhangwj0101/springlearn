@@ -6,6 +6,7 @@ package cn.nlsde.entity;
 
 import cn.nlsde.common.BaseEntity;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -17,7 +18,7 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-
+@EqualsAndHashCode(callSuper = false)
 public class Employee extends BaseEntity {
     @Id
     @GeneratedValue(generator = "system-uuid")

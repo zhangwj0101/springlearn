@@ -1,17 +1,14 @@
 package cn.nlsde.entity;
 
 import cn.nlsde.common.BaseEntity;
-import com.fasterxml.jackson.databind.deser.Deserializers;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.io.Serializable;
 
 /**
  * Created by zhangwj on 16/3/2.
@@ -19,6 +16,7 @@ import java.io.Serializable;
 @Data
 @Entity
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class Person extends BaseEntity {
 
     @Id
