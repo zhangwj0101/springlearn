@@ -8,6 +8,7 @@ import cn.nlsde.entity.Employee;
 import cn.nlsde.entity.User;
 import cn.nlsde.privilege.Privilege;
 import cn.nlsde.service.UserService;
+import nl.captcha.Captcha;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +57,7 @@ public class IndexController {
         return sb;
     }
 
-    //    @ResponseBody
+        @ResponseBody
     @RequestMapping(value = "/login")
     @FreeAccess
     public Map login(HttpSession session) {
@@ -64,7 +65,9 @@ public class IndexController {
         Map<Integer, String> maps = new HashMap<Integer, String>();
         maps.put(1, "中国");
         maps.put(2, "login test");
+        Captcha captcha = (Captcha) session.getAttribute(Captcha.NAME);
 
+        logger.info("captcha :{}", captcha.getAnswer());
         return maps;
     }
 
