@@ -8,12 +8,15 @@
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+       http://www.springframework.org/schema/data/mongo  http://www.springframework.org/schema/data/mongo/spring-mongo-1.8.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd">
+
 
     <context:annotation-config/>
     <context:component-scan base-package="cn.nlsde.*">
@@ -22,6 +25,7 @@
 
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
           p:location="classpath:jdbc.properties"/>
+
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSourceC3P0Adapter">
         <property name="driverClass" value="${jdbc.driverClassName}"/>
         <property name="jdbcUrl" value="${jdbc.url}"/>
@@ -35,6 +39,7 @@
         <property name="maxPoolSize" value="20"/>
         <property name="acquireIncrement" value="5"/>
     </bean>
+
 
     <!-- 放到tx后边-->
 
