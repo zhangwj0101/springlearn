@@ -172,11 +172,6 @@
             <artifactId>simplecaptcha</artifactId>
             <version>1.3.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-mongodb</artifactId>
-            <version>1.0.0.RELEASE</version>
-        </dependency>
 
 
     </dependencies>
