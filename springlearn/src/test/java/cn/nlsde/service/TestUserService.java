@@ -30,10 +30,8 @@ public class TestUserService extends BaseTest {
     @Autowired
     EmployeeDAO employeeDAO;
 
-
     @Autowired
     EntityManagerFactory entityManagerFactory;
-
 
     @Test
 //    @Ignore

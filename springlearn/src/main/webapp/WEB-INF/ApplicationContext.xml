@@ -36,12 +36,7 @@
         <property name="acquireIncrement" value="5"/>
     </bean>
 
-
-    <!-- 放到tx后边-->
-
     <!-- spring data JPA访问方式-->
-    <aop:aspectj-autoproxy proxy-target-class="true"/>
-
     <bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
@@ -76,15 +71,18 @@
             </props>
         </property>
     </bean>
+    
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
     <jpa:repositories
-            base-package="cn.nlsde.dao"
-            entity-manager-factory-ref="entityManagerFactory"
-            transaction-manager-ref="transactionManager">
+        base-package="cn.nlsde.dao"
+        entity-manager-factory-ref="entityManagerFactory"
+        transaction-manager-ref="transactionManager">
     </jpa:repositories>
 
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
@@ -101,7 +99,4 @@
         <aop:advisor id="managerTx" advice-ref="txAdvice" pointcut="execution(* cn.nlsde.service..*.*(..))"
                      order="1"/>
     </aop:config>
-
-    <!--<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>-->
-
 </beans>
