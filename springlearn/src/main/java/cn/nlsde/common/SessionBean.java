@@ -1,7 +1,7 @@
 package cn.nlsde.common;
 
-import cn.nlsde.db.entity.User;
 import cn.nlsde.privilege.Privilege;
+import cn.nlsde.repository.jpa.entity.User;
 import lombok.Data;
 
 import java.util.HashSet;

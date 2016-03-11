@@ -1,6 +1,7 @@
 package cn.nlsde.service;
 
-import cn.nlsde.db.entity.Employee;
+
+import cn.nlsde.repository.jpa.entity.Employee;
 
 /**
  * Created by zhangwj on 16/2/27.

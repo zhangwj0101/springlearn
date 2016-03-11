@@ -1,10 +1,10 @@
 package cn.nlsde.service;
 
 import cn.nlsde.base.BaseTest;
-import cn.nlsde.db.dao.EmployeeDAO;
-import cn.nlsde.db.dao.UserDAO;
-import cn.nlsde.db.entity.Address;
-import cn.nlsde.db.entity.Employee;
+import cn.nlsde.repository.jpa.dao.EmployeeDAO;
+import cn.nlsde.repository.jpa.dao.UserDAO;
+import cn.nlsde.repository.jpa.entity.Address;
+import cn.nlsde.repository.jpa.entity.Employee;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
