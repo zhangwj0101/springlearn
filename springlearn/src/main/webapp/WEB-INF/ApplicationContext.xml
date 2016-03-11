@@ -24,7 +24,7 @@
     </context:component-scan>
 
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-          p:location="classpath:jdbc.properties"/>
+          p:location="classpath:repository.properties"/>
 
     <!--注意solr版本为4.10-->
     <solr:solr-server id="solrServer" url="${solr.host}"/>
@@ -33,25 +33,25 @@
     </bean>
     <solr:repositories base-package="cn.nlsde.repository.solr"/>
 
-    <!--<mongo:mongo-client id="mongo" replica-set="${mongo.replicaSet}">-->
-    <!--<mongo:client-options-->
-    <!--connections-per-host="${mongo.connectionsPerHost}"-->
-    <!--threads-allowed-to-block-for-connection-multiplier="${mongo.threadsAllowedToBlockForConnectionMultiplier}"-->
-    <!--connect-timeout="${mongo.connectTimeout}"-->
-    <!--max-wait-time="${mongo.maxWaitTime}"-->
-    <!--socket-keep-alive="${mongo.socketKeepAlive}"-->
-    <!--socket-timeout="${mongo.socketTimeout}"/>-->
-    <!--</mongo:mongo-client>-->
-    <!--<mongo:db-factory dbname="test" mongo-ref="mongo"/>-->
-    <!--<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">-->
-    <!--<constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>-->
-    <!--</bean>-->
-    <!--&lt;!&ndash; 映射转换器，扫描back-package目录下的文件，根据注释，把它们作为mongodb的一个collection的映射 &ndash;&gt;-->
-    <!--<mongo:mapping-converter base-package="cn.nlsde.mongo.entity"/>-->
-    <!--&lt;!&ndash; mongodb bean的仓库目录，会自动扫描扩展了MongoRepository接口的接口进行注入 &ndash;&gt;-->
-    <!--<mongo:repositories base-package="cn.nlsde.mongo.dao"/>-->
-    <!-- mongodb配置结束-->
-    <!-- 数据库配置-->
+    <mongo:mongo-client id="mongo" replica-set="${mongo.replicaSet}">
+        <mongo:client-options
+                connections-per-host="${mongo.connectionsPerHost}"
+                threads-allowed-to-block-for-connection-multiplier="${mongo.threadsAllowedToBlockForConnectionMultiplier}"
+                connect-timeout="${mongo.connectTimeout}"
+                max-wait-time="${mongo.maxWaitTime}"
+                socket-keep-alive="${mongo.socketKeepAlive}"
+                socket-timeout="${mongo.socketTimeout}"/>
+    </mongo:mongo-client>
+    <mongo:db-factory dbname="test" mongo-ref="mongo"/>
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
+    </bean>
+    <!-- 映射转换器，扫描back-package目录下的文件，根据注释，把它们作为mongodb的一个collection的映射 -->
+    <mongo:mapping-converter base-package="cn.nlsde.repository.mongo.entity"/>
+    <!-- mongodb bean的仓库目录，会自动扫描扩展了MongoRepository接口的接口进行注入 -->
+    <mongo:repositories base-package="cn.nlsde.repository.mongo.dao"/>
+    <!--mongodb配置结束-->
+    <!--数据库配置-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSourceC3P0Adapter">
         <property name="driverClass" value="${jdbc.driverClassName}"/>
         <property name="jdbcUrl" value="${jdbc.url}"/>
