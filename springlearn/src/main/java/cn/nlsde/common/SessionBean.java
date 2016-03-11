@@ -1,6 +1,6 @@
 package cn.nlsde.common;
 
-import cn.nlsde.entity.User;
+import cn.nlsde.db.entity.User;
 import cn.nlsde.privilege.Privilege;
 import lombok.Data;
 

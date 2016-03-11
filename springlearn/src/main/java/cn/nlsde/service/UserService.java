@@ -1,6 +1,6 @@
 package cn.nlsde.service;
 
-import cn.nlsde.entity.Employee;
+import cn.nlsde.db.entity.Employee;
 
 /**
  * Created by zhangwj on 16/2/27.

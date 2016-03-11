@@ -1,6 +1,6 @@
-package cn.nlsde.dao;
+package cn.nlsde.db.dao;
 
-import cn.nlsde.entity.Address;
+import cn.nlsde.db.entity.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

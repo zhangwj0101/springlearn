@@ -1,4 +1,4 @@
-package cn.nlsde.service;
+package cn.nlsde.base;
 
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

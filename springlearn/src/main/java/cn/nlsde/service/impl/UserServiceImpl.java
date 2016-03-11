@@ -1,10 +1,10 @@
 package cn.nlsde.service.impl;
 
-import cn.nlsde.dao.AddressDAO;
-import cn.nlsde.dao.EmployeeDAO;
-import cn.nlsde.dao.UserDAO;
-import cn.nlsde.entity.Address;
-import cn.nlsde.entity.Employee;
+import cn.nlsde.db.dao.AddressDAO;
+import cn.nlsde.db.dao.EmployeeDAO;
+import cn.nlsde.db.dao.UserDAO;
+import cn.nlsde.db.entity.Address;
+import cn.nlsde.db.entity.Employee;
 import cn.nlsde.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

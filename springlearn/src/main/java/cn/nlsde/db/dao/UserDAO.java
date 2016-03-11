@@ -1,6 +1,6 @@
-package cn.nlsde.dao;
+package cn.nlsde.db.dao;
 
-import cn.nlsde.entity.User;
+import cn.nlsde.db.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;

@@ -1,4 +1,4 @@
-package cn.nlsde.entity;
+package cn.nlsde.db.entity;
 
 import cn.nlsde.common.BaseEntity;
 import lombok.Data;
