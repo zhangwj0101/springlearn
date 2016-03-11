@@ -5,15 +5,10 @@ import cn.nlsde.repository.jpa.dao.EmployeeDAO;
 import cn.nlsde.repository.jpa.dao.UserDAO;
 import cn.nlsde.repository.jpa.entity.Address;
 import cn.nlsde.repository.jpa.entity.Employee;
-import cn.nlsde.service.UserService;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.annotation.Resource;
-import javax.persistence.EntityManagerFactory;
 import java.util.Arrays;
 
 /**
@@ -27,11 +22,9 @@ public class JPATest extends BaseTest {
     @Autowired
     EmployeeDAO employeeDAO;
 
-    @Autowired
-    EntityManagerFactory entityManagerFactory;
 
     @Test
-//    @Ignore
+    @Ignore
     public void testName() {
         Employee e = new Employee();
         e.setEmployeeName("张三");

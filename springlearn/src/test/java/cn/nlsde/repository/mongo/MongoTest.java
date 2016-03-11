@@ -1,8 +1,8 @@
 package cn.nlsde.repository.mongo;
 
 import cn.nlsde.base.BaseTest;
-import cn.nlsde.repository.mongo.dao.PersonDAO;
-import cn.nlsde.repository.mongo.dao.SchoolDAO;
+import cn.nlsde.repository.mongo.dao.PersonRepository;
+import cn.nlsde.repository.mongo.dao.SchoolRepository;
 import cn.nlsde.repository.mongo.entity.Person;
 import cn.nlsde.repository.mongo.entity.School;
 import org.junit.Ignore;
@@ -15,23 +15,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class MongoTest extends BaseTest {
 
     @Autowired
-    SchoolDAO schoolDAO;
+    SchoolRepository schoolRepository;
 
     @Autowired
-    PersonDAO personDAO;
+    PersonRepository personRepository;
 
     @Test
-//    @Ignore
+    @Ignore
     public void testMongodb() {
         School school = new School();
         school.setName("北航");
         school.setAddress("学院路");
-        schoolDAO.save(school);
+        schoolRepository.save(school);
         Person p = new Person();
         p.setAge(13);
         p.setName("张三");
         p.setPassword("12312");
-        personDAO.save(p);
+        personRepository.save(p);
     }
 
     @Test
@@ -40,7 +40,7 @@ public class MongoTest extends BaseTest {
         School school = new School();
         school.setName("北航");
         school.setAddress("学院路");
-        schoolDAO.save(school);
-        System.out.println(schoolDAO.findOne("56e22ec01ee0964b18788b79"));
+        schoolRepository.save(school);
+        System.out.println(personRepository.findOne("56e22ec01ee0964b18788b79"));
     }
 }
