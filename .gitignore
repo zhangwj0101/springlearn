@@ -9,8 +9,8 @@
 *.ear
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-/springlearn/target/
-/springlearn/info.log
-/springlearn/.idea/
-/springlearn/springlearn.iml
-/springlearn/nb-configuration.xml
+**/target/
+**/info.log
+**/.idea/
+**/springlearn.iml
+**/nb-configuration.xml
