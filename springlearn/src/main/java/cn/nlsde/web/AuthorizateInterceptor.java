@@ -31,7 +31,6 @@ public class AuthorizateInterceptor extends HandlerInterceptorAdapter {
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         SessionBean sb = (SessionBean) request.getSession().getAttribute(Constants.SESSION_BEAN);
         logger.info("login {}", sb);
-        System.out.println(sb);
         Privilege[] privileges = {};
         //类级别或者方法级别有注解
         if (handlerMethod.getMethod().isAnnotationPresent(FreeAccess.class)

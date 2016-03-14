@@ -3,7 +3,6 @@ package cn.nlsde.controller;
 import cn.nlsde.annotation.FreeAccess;
 import cn.nlsde.common.SessionBean;
 import cn.nlsde.constant.Constants;
-
 import cn.nlsde.privilege.Privilege;
 import cn.nlsde.repository.jpa.entity.Address;
 import cn.nlsde.repository.jpa.entity.Employee;
@@ -30,6 +29,9 @@ import java.util.UUID;
 @RequestMapping("/index")
 public class IndexController {
     Logger logger = LoggerFactory.getLogger(IndexController.class);
+
+//    @Inject
+//    Logger logger;
 
     @Autowired
     UserService userService;
@@ -58,7 +60,7 @@ public class IndexController {
         return sb;
     }
 
-        @ResponseBody
+    @ResponseBody
     @RequestMapping(value = "/login")
     @FreeAccess
     public Map login(HttpSession session) {

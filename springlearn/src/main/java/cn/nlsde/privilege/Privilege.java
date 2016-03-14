@@ -19,4 +19,15 @@ public enum Privilege {
     private final String description;
     private final String group;
 
+    public String getKey() {
+        return key;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getGroup() {
+        return group;
+    }
 }
