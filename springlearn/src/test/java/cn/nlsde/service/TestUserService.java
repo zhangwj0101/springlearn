@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
-import javax.persistence.EntityManagerFactory;
 import java.util.Arrays;
 
 /**
@@ -31,8 +30,6 @@ public class TestUserService extends BaseTest {
     @Autowired
     EmployeeDAO employeeDAO;
 
-    @Autowired
-    EntityManagerFactory entityManagerFactory;
 
     @Test
 //    @Ignore
