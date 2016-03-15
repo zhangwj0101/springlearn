@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
-import org.springframework.data.redis.core.RedisTemplate;
 
 /**
  * Created by zhangwj on 16/2/27.
@@ -27,8 +26,6 @@ public class TestUserService extends BaseTest {
     @Autowired
     UserDAO userDAO;
 
-    @Autowired
-    RedisTemplate redisTemplate;
 
     @Autowired
     EmployeeDAO employeeDAO;
@@ -54,7 +51,6 @@ public class TestUserService extends BaseTest {
 //        for (Address a : employee.getAddresses()) {
 //            logger.info("{}", a.getAddressCity());
 //        }
-        redisTemplate.persist(e);
     }
 
     @Test
