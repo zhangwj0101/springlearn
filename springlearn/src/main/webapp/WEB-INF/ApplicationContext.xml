@@ -29,7 +29,7 @@
     <bean id="solrTemplate" class="org.springframework.data.solr.core.SolrTemplate">
         <constructor-arg ref="solrServer"/>
     </bean>
-    <solr:repositories base-package="cn.nlsde.repository.solr"/>
+    <solr:repositories base-package="cn.nlsde.repository.solr" multicore-support="true"/>
 
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSourceC3P0Adapter">
@@ -90,9 +90,9 @@
     </bean>
 
     <jpa:repositories
-            base-package="cn.nlsde.repository.jpa.dao"
-            entity-manager-factory-ref="entityManagerFactory"
-            transaction-manager-ref="transactionManager">
+        base-package="cn.nlsde.repository.jpa.dao"
+        entity-manager-factory-ref="entityManagerFactory"
+        transaction-manager-ref="transactionManager">
     </jpa:repositories>
 
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
