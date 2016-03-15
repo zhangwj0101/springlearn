@@ -5,6 +5,7 @@ import cn.nlsde.repository.jpa.dao.EmployeeDAO;
 import cn.nlsde.repository.jpa.dao.UserDAO;
 import cn.nlsde.repository.jpa.entity.Address;
 import cn.nlsde.repository.jpa.entity.Employee;
+import cn.nlsde.repository.jpa.entity.User;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -25,7 +26,6 @@ public class TestUserService extends BaseTest {
 
     @Autowired
     UserDAO userDAO;
-
 
     @Autowired
     EmployeeDAO employeeDAO;
@@ -51,6 +51,12 @@ public class TestUserService extends BaseTest {
 //        for (Address a : employee.getAddresses()) {
 //            logger.info("{}", a.getAddressCity());
 //        }
+    }
+
+    @Test
+    public void testUser() {
+        User user = new User();
+        userDAO.save(user);
     }
 
     @Test

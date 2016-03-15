@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 
 /**
  * Created by zhangwj on 16/2/27.
@@ -16,7 +18,7 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @NamedQueries({
-        @NamedQuery(name = "User.findUser", query = "select u from User u where id = :id")
+    @NamedQuery(name = "User.findUser", query = "select u from User u where id = :id")
 
 })
 @EqualsAndHashCode(callSuper = false)
@@ -26,7 +28,7 @@ public class User extends BaseEntity {
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     private String id;
+    @NotNull(message = "用户名不能为空")
     private String userName;
     private String password;
-
 }
