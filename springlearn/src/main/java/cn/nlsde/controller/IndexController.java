@@ -8,7 +8,6 @@ import cn.nlsde.repository.jpa.entity.Address;
 import cn.nlsde.repository.jpa.entity.Employee;
 import cn.nlsde.repository.jpa.entity.User;
 import cn.nlsde.service.UserService;
-import nl.captcha.Captcha;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,9 +67,7 @@ public class IndexController {
         Map<Integer, String> maps = new HashMap<Integer, String>();
         maps.put(1, "中国");
         maps.put(2, "login test");
-        Captcha captcha = (Captcha) session.getAttribute(Captcha.NAME);
 
-        logger.info("captcha :{}", captcha.getAnswer());
         return maps;
     }
 
