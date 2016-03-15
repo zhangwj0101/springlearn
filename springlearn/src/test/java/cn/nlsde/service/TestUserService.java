@@ -13,11 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
+import org.springframework.data.redis.core.RedisTemplate;
 
 /**
  * Created by zhangwj on 16/2/27.
  */
-
 public class TestUserService extends BaseTest {
 
     private static final Logger logger = LoggerFactory.getLogger(TestUserService.class);
@@ -28,12 +28,15 @@ public class TestUserService extends BaseTest {
     UserDAO userDAO;
 
     @Autowired
-    EmployeeDAO employeeDAO;
+    RedisTemplate redisTemplate;
 
+    @Autowired
+    EmployeeDAO employeeDAO;
 
     @Test
 //    @Ignore
     public void testName() {
+
         Employee e = new Employee();
         e.setEmployeeName("张三");
 
@@ -51,6 +54,7 @@ public class TestUserService extends BaseTest {
 //        for (Address a : employee.getAddresses()) {
 //            logger.info("{}", a.getAddressCity());
 //        }
+        redisTemplate.persist(e);
     }
 
     @Test

@@ -33,20 +33,20 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
     <!--<servlet>-->
-        <!--<servlet-name>captcha</servlet-name>-->
-        <!--<servlet-class>nl.captcha.servlet.SimpleCaptchaServlet</servlet-class>-->
-        <!--<init-param>-->
-            <!--<param-name>width</param-name>-->
-            <!--<param-value>65</param-value>-->
-        <!--</init-param>-->
-        <!--<init-param>-->
-            <!--<param-name>height</param-name>-->
-            <!--<param-value>22</param-value>-->
-        <!--</init-param>-->
+    <!--<servlet-name>captcha</servlet-name>-->
+    <!--<servlet-class>nl.captcha.servlet.SimpleCaptchaServlet</servlet-class>-->
+    <!--<init-param>-->
+    <!--<param-name>width</param-name>-->
+    <!--<param-value>65</param-value>-->
+    <!--</init-param>-->
+    <!--<init-param>-->
+    <!--<param-name>height</param-name>-->
+    <!--<param-value>22</param-value>-->
+    <!--</init-param>-->
     <!--</servlet>-->
     <!--<servlet-mapping>-->
-        <!--<servlet-name>captcha</servlet-name>-->
-        <!--<url-pattern>/captcha.png</url-pattern>-->
+    <!--<servlet-name>captcha</servlet-name>-->
+    <!--<url-pattern>/captcha.png</url-pattern>-->
     <!--</servlet-mapping>-->
 
     <filter>
@@ -67,15 +67,14 @@
         <url-pattern>/</url-pattern>
     </filter-mapping>
 
-    <!--&lt;!&ndash; delegatingFilterProxy &ndash;&gt;-->
-    <!--<filter>-->
-        <!--<filter-name>springSessionRepositoryFilter</filter-name>-->
-        <!--<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
-    <!--</filter>-->
-    <!--<filter-mapping>-->
-        <!--<filter-name>springSessionRepositoryFilter</filter-name>-->
-        <!--<url-pattern>/</url-pattern>-->
-    <!--</filter-mapping>-->
+    <filter>
+        <filter-name>springSessionRepositoryFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>springSessionRepositoryFilter</filter-name>
+        <url-pattern>/</url-pattern>
+    </filter-mapping>
 
     <session-config>
         <session-timeout>30</session-timeout>

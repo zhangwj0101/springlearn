@@ -13,6 +13,6 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 @TestExecutionListeners({DependencyInjectionTestExecutionListener.class,
                          TransactionalTestExecutionListener.class})
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/ApplicationContext.xml"})
-public class BaseTest extends AbstractJUnit4SpringContextTests {
+public abstract class BaseTest extends AbstractJUnit4SpringContextTests {
 
 }
