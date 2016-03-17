@@ -19,8 +19,7 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-          p:location="classpath:repository.properties"/>
+    <context:property-placeholder location="classpath:repository.properties"/>
 
     <!--数据库配置-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSourceC3P0Adapter">
