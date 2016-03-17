@@ -96,7 +96,7 @@
 
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
-            <tx:method name="*" propagation="NESTED" read-only="true"/>
+            <tx:method name="*" propagation="SUPPORTS" read-only="true"/>
             <tx:method name="create*" propagation="REQUIRED" read-only="false"/>
             <tx:method name="save*" propagation="REQUIRED" read-only="false"/>
             <tx:method name="update*" propagation="REQUIRED" read-only="false"/>
