@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public Employee get(String id) {
-        Employee employee = employeeDAO.getOne(id);
+        Employee employee = employeeDAO.findOne(id);
         return employee;
     }
 }
