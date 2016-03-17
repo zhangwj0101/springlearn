@@ -57,11 +57,8 @@ public class UserServiceImpl implements UserService {
         employeeDAO.save(e);
     }
 
-    public Employee get() {
-        Employee employee = employeeDAO.getOne("eeac14f1-0443-4c60-af2b-d0f5fcae7e73");
-        for (Address a : employee.getAddresses()) {
-            logger.info("{}", a.getId());
-        }
+    public Employee get(String id) {
+        Employee employee = employeeDAO.getOne(id);
         return employee;
     }
 }

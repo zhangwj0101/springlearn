@@ -39,6 +39,5 @@ public class Employee extends BaseEntity {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", fetch = FetchType.LAZY)
     private List<Address> addresses = new ArrayList<>();
-//    private Address addresses;
 
 }

@@ -75,10 +75,7 @@ public class IndexController {
     @RequestMapping("/get")
     @FreeAccess
     public String get() {
-        Employee employee = userService.get();
-        for (Address a : employee.getAddresses()) {
-//            logger.info("{}", a.getAddressCity());
-        }
+
         return "get";
     }
 

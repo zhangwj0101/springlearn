@@ -1,6 +1,7 @@
 package cn.nlsde.service;
 
 import cn.nlsde.base.BaseTest;
+import cn.nlsde.repository.jpa.dao.AddressDAO;
 import cn.nlsde.repository.jpa.dao.EmployeeDAO;
 import cn.nlsde.repository.jpa.dao.UserDAO;
 import cn.nlsde.repository.jpa.entity.Address;
@@ -11,6 +12,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
@@ -29,28 +31,16 @@ public class TestUserService extends BaseTest {
 
     @Autowired
     EmployeeDAO employeeDAO;
+    @Autowired
+    AddressDAO addressDAO;
 
     @Test
+    @Transactional
 //    @Ignore
     public void testName() {
 
-        Employee e = new Employee();
-        e.setEmployeeName("张三");
-
-        Address a1 = new Address();
-        a1.setAddressCity("北京");
-        a1.setAddressCountry("北京");
-
-        Address a2 = new Address();
-        a2.setAddressCountry("南阳");
-        a2.setAddressCity("南阳");
-
-        e.getAddresses().addAll(Arrays.asList(a1, a2));
-        employeeDAO.save(e);
-//        Employee employee = userService.get();
-//        for (Address a : employee.getAddresses()) {
-//            logger.info("{}", a.getAddressCity());
-//        }
+        Employee employee = userService.get("e4802c4a-e99f-42d9-8922-9ffeb4c922a4");
+        employee.getEmployeeName();
     }
 
     @Test

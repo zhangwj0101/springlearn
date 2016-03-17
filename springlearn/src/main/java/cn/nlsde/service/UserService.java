@@ -12,6 +12,6 @@ public interface UserService {
 
     public void save();
 
-    public Employee get();
+    public Employee get(String id);
 
 }
