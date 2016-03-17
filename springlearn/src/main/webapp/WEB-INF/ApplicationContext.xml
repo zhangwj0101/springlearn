@@ -21,8 +21,7 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-          p:location="classpath:repository.properties"/>
+    <context:property-placeholder location="classpath:repository.properties"/>
 
 
     <mongo:mongo-client id="mongo" replica-set="${mongo.replicaSet}">
