@@ -23,8 +23,7 @@
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
-    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-          p:location="classpath:repository.properties"/>
+    <context:property-placeholder location="classpath:repository.properties"/>
 
     <!--注意solr版本为4.10-->
     <solr:solr-server id="solrServer" url="${solr.host}"/>
@@ -35,12 +34,12 @@
 
     <mongo:mongo-client id="mongo" replica-set="${mongo.replicaSet}">
         <mongo:client-options
-            connections-per-host="${mongo.connectionsPerHost}"
-            threads-allowed-to-block-for-connection-multiplier="${mongo.threadsAllowedToBlockForConnectionMultiplier}"
-            connect-timeout="${mongo.connectTimeout}"
-            max-wait-time="${mongo.maxWaitTime}"
-            socket-keep-alive="${mongo.socketKeepAlive}"
-            socket-timeout="${mongo.socketTimeout}"/>
+                connections-per-host="${mongo.connectionsPerHost}"
+                threads-allowed-to-block-for-connection-multiplier="${mongo.threadsAllowedToBlockForConnectionMultiplier}"
+                connect-timeout="${mongo.connectTimeout}"
+                max-wait-time="${mongo.maxWaitTime}"
+                socket-keep-alive="${mongo.socketKeepAlive}"
+                socket-timeout="${mongo.socketTimeout}"/>
     </mongo:mongo-client>
     <mongo:db-factory dbname="test" mongo-ref="mongo"/>
     <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
@@ -110,9 +109,9 @@
     </bean>
 
     <jpa:repositories
-        base-package="cn.nlsde.repository.jpa.dao"
-        entity-manager-factory-ref="entityManagerFactory"
-        transaction-manager-ref="transactionManager">
+            base-package="cn.nlsde.repository.jpa.dao"
+            entity-manager-factory-ref="entityManagerFactory"
+            transaction-manager-ref="transactionManager">
     </jpa:repositories>
 
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
