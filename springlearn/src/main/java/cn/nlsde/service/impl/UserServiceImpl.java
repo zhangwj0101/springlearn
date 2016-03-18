@@ -59,9 +59,6 @@ public class UserServiceImpl implements UserService {
 
     public Employee get() {
         Employee employee = employeeDAO.findOne("eeac14f1-0443-4c60-af2b-d0f5fcae7e73");
-        for (Address a : employee.getAddresses()) {
-            logger.info("{}", a.getId());
-        }
         return employee;
     }
 }
