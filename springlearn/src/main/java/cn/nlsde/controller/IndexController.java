@@ -80,7 +80,7 @@ public class IndexController {
     public String get() {
         Employee employee = userService.get();
         for (Address a : employee.getAddresses()) {
-//            logger.info("{}", a.getAddressCity());
+            logger.info("{}", a.getAddressCity());
         }
         return "get";
     }
