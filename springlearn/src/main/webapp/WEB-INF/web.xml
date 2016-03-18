@@ -66,15 +66,20 @@
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
-    <!--<filter>-->
-    <!--<filter-name>springSessionRepositoryFilter</filter-name>-->
-    <!--<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
-    <!--</filter>-->
-    <!--<filter-mapping>-->
-    <!--<filter-name>springSessionRepositoryFilter</filter-name>-->
-    <!--<url-pattern>/</url-pattern>-->
-    <!--</filter-mapping>-->
+    <!-- 解决懒加载问题，会保持事务到controller，开销比较大，根据懒加载有必要保持到controller层决定是否启用-->
+    <filter>
+        <filter-name>openEntityManagerInViewFilter</filter-name>
+        <filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>
+        <!-- 默认查找可以省略-->
+        <!--<init-param>-->
+        <!--<param-name>entityManagerFactoryBeanName</param-name>-->
+        <!--<param-value>entityManagerFactory</param-value>-->
+        <!--</init-param>-->
+    </filter>
+    <filter-mapping>
+        <filter-name>openEntityManagerInViewFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
     <session-config>
         <session-timeout>30</session-timeout>

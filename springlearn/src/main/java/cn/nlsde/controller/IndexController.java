@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -76,6 +77,11 @@ public class IndexController {
     @FreeAccess
     public String get() {
 
+        Employee employee = userService.get("e4802c4a-e99f-42d9-8922-9ffeb4c922a4");
+        List<Address> addresses = employee.getAddresses();
+        for (Address a : addresses) {
+            logger.info("{}", a.getAddressCity());
+        }
         return "get";
     }
 

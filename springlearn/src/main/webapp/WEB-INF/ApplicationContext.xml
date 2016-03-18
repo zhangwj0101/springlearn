@@ -39,6 +39,7 @@
     <!-- spring data JPA访问方式-->
     <bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitName" value="walle"/>
         <property name="dataSource" ref="dataSource"/>
         <property name="packagesToScan" value="cn.nlsde.repository.jpa.entity"/>
         <property name="jpaVendorAdapter">
@@ -71,7 +72,6 @@
             </props>
         </property>
     </bean>
-
 
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 
