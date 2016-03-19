@@ -8,6 +8,8 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.solr.core.query.result.FacetPage;
 
 import java.util.Iterator;
 
@@ -22,12 +24,19 @@ public class SolrTest extends BaseTest {
 
 
     @Test
-    @Ignore
+//    @Ignore
     public void testsolrTest() {
         Iterable<Product> all = productRepository.findAll();
         Iterator<Product> iterator = all.iterator();
         while (iterator.hasNext()) {
             logger.info("{}", iterator.next());
         }
+    }
+
+    @Test
+//    @Ignore
+    public void testsolrFacet() {
+        FacetPage<Product> all = productRepository.findByNameAndFacetOnCategories("assdd", new PageRequest(1, 10));
+
     }
 }
