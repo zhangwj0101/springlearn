@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * 用于表示用户的相关信息
  * Created by zhangwj on 16/3/5.
  */
 @Data

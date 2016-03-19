@@ -14,10 +14,10 @@ import javax.persistence.*;
  */
 @Data
 @Entity
+@Table(name = "TB_USER")
 @NoArgsConstructor
 @NamedQueries({
-        @NamedQuery(name = "User.findUser", query = "select u from User u where id = :id")
-
+        @NamedQuery(name = "User.findUser", query = "select u from User u where u.id = :id")
 })
 @EqualsAndHashCode(callSuper = false)
 public class User extends BaseEntity {

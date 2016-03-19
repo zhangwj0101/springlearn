@@ -1,6 +1,7 @@
 package cn.nlsde.privilege;
 
 /**
+ * 用户相关权限
  * Created by zhangwj on 16/3/5.
  */
 public enum Privilege {

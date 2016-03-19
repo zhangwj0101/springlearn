@@ -1,6 +1,7 @@
 package cn.nlsde.constant;
 
 /**
+ * 全局常量表
  * Created by zhangwj on 16/3/5.
  */
 public interface Constants {

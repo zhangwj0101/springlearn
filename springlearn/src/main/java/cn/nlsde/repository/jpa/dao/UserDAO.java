@@ -19,7 +19,7 @@ public interface UserDAO extends JpaRepository<User, String>, JpaSpecificationEx
     public List<User> findByUserName(String name);
 
     @Async
-    @Query("select  u.userName from User u where u.userName = ?")
+    @Query("select  u.userName from User u where u.userName = ?1")
     Future<String> findUserName(String name);
 
     public User findUser(@Param("id") String id);
