@@ -8,6 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
@@ -16,9 +17,10 @@ import org.hibernate.validator.constraints.Range;
  */
 @Data
 @Entity
+@Table(name = "TB_USER")
 @NoArgsConstructor
 @NamedQueries({
-    @NamedQuery(name = "User.findUser", query = "select u from User u where id = :id")
+        @NamedQuery(name = "User.findUser", query = "select u from User u where u.id = :id")
 
 })
 @EqualsAndHashCode(callSuper = false)

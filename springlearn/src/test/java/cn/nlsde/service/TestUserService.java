@@ -46,13 +46,15 @@ public class TestUserService extends BaseTest {
     @Test
     public void testUser() {
         User user = new User();
+        user.setUserName("中国");
         userDAO.save(user);
     }
 
     @Test
-    @Ignore
+//    @Ignore
     public void del() {
-        employeeDAO.delete("d06e4e90-2647-4e63-b230-d8a5ded26822");
+        User user = userDAO.findUser("adae08b9-c2db-492e-aea0-a735faa4e134");
+        logger.info("{}", user);
 //        addressDAO.delete("fc622966-d9c0-40ef-a44d-4c3b9816b292");
 //        employeeDAO.deleteAll();
 //        addressDAO.deleteAll();
