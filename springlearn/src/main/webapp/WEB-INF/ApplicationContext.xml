@@ -46,47 +46,38 @@
     </bean>
 
     <!-- spring data JPA访问方式-->
+    <!-- spring data JPA访问方式-->
     <bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
+        <property name="jtaDataSource" ref="dataSource"/>
         <property name="packagesToScan" value="cn.nlsde.repository.jpa.entity"/>
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
                 <property name="generateDdl" value="true"/>
                 <property name="database" value="MYSQL"/>
-                <property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
-                <property name="showSql" value="false"/>
             </bean>
-        </property>
-        <property name="jpaDialect">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
-        </property>
-        <property name="jpaPropertyMap">
-            <map>
-                <entry key="hibernate.query.substitutions" value="true 1, false 0"/>
-                <entry key="hibernate.default_batch_fetch_size" value="16"/>
-                <entry key="hibernate.max_fetch_depth" value="2"/>
-                <entry key="hibernate.generate_statistics" value="true"/>
-                <entry key="hibernate.bytecode.use_reflection_optimizer" value="true"/>
-            </map>
         </property>
         <property name="jpaProperties">
             <props>
-                <prop key="hibernate.max_fetch_depth">3</prop>
-                <prop key="hibernate.jdbc.fetch_size">18</prop>
-                <prop key="hibernate.jdbc.batch_size">10</prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
             </props>
         </property>
     </bean>
 
+    <jpa:repositories
+            base-package="cn.nlsde.repository.jpa.dao"
+            entity-manager-factory-ref="entityManagerFactory"
+            transaction-manager-ref="transactionManager">
+    </jpa:repositories>
 
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
+    <!-- 切面事务控制-->
 
     <jpa:repositories
             base-package="cn.nlsde.repository.jpa.dao"
