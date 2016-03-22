@@ -12,7 +12,7 @@ import java.util.Set;
  * Created by zhangwj on 16/3/5.
  */
 @Data
-public class SessionBean {
+public class SessionBean extends BaseEntity {
 
     private User user;
 
