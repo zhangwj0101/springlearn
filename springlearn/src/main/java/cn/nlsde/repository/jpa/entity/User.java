@@ -22,6 +22,7 @@ import org.hibernate.validator.constraints.Range;
 @NamedQueries({
         @NamedQuery(name = "User.findUser", query = "select u from User u where u.id = :id")
 
+
 })
 @EqualsAndHashCode(callSuper = false)
 public class User extends BaseEntity {

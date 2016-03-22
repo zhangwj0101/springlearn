@@ -24,4 +24,8 @@ public interface UserDAO extends JpaRepository<User, String>, JpaSpecificationEx
 
     public User findUser(@Param("id") String id);
 
+
+    @Query(value = "select username,password from tb_user where id = ?1", nativeQuery = true)
+    public List<Object[]> querys(String id);
+
 }
