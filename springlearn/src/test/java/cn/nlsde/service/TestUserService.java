@@ -16,6 +16,8 @@ import org.springframework.test.annotation.Repeat;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -37,11 +39,14 @@ public class TestUserService extends BaseTest {
     @Autowired
     AddressDAO addressDAO;
 
+    @Autowired
+    EntityManagerFactory entityManagerFactory;
+
     @Test
     @Transactional
 //    @Ignore
     public void testName() {
-
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
         Employee employee = userService.get("e4802c4a-e99f-42d9-8922-9ffeb4c922a4");
         employee.getEmployeeName();
     }
