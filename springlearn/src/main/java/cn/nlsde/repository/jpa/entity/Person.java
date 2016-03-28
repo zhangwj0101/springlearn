@@ -16,7 +16,7 @@ import javax.persistence.Id;
 @Data
 @Entity
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(exclude = {"id"},callSuper = false)
 public class Person extends BaseEntity {
 
     @Id
