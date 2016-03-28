@@ -3,6 +3,7 @@ package cn.nlsde.entity;
 import cn.nlsde.common.BaseEntity;
 import com.fasterxml.jackson.databind.deser.Deserializers;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -18,6 +19,7 @@ import java.io.Serializable;
 @Data
 @Entity
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = false, exclude = "id")
 public class Person extends BaseEntity {
     @Id
     @GeneratedValue(generator = "system-uuid")
