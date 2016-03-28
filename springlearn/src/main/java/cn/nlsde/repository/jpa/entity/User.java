@@ -24,7 +24,7 @@ import org.hibernate.validator.constraints.Range;
 
 
 })
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(exclude = {"id"}, callSuper = false)
 public class User extends BaseEntity {
 
     @Id

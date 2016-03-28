@@ -16,7 +16,7 @@ import java.util.Date;
 @Entity
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(exclude = {"id", "employee", "date"}, callSuper = false)
 public class Address extends BaseEntity {
     @Id
     @GeneratedValue(generator = "system-uuid")

@@ -18,7 +18,7 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(exclude = {"id", "addresses", "date"}, callSuper = false)
 public class Employee extends BaseEntity {
     @Id
     @GeneratedValue(generator = "system-uuid")
