@@ -37,7 +37,7 @@ public class Address extends BaseEntity {
 
     private String addressCity;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne
     private Employee employee;
 
 }

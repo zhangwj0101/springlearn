@@ -6,9 +6,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by zhangwj on 16/3/2.
@@ -25,4 +24,6 @@ public class Person extends BaseEntity {
     private String id;
     private String userName;
     private String password;
+
+
 }

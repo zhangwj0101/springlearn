@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
+import java.util.Collection;
+
 /**
  * Created by zhangwj on 16/2/27.
  */
@@ -34,4 +36,10 @@ public class User extends BaseEntity {
     @NotNull(message = "用户名不能为空")
     private String userName;
     private String password;
+
+    @ManyToMany
+    @JoinTable(name = "RF_USER_ROLE", joinColumns
+            = @JoinColumn(name = "USER_ID"), inverseJoinColumns
+            = @JoinColumn(name = "ROLE_ID"))
+    private Collection<Role> roles;
 }
