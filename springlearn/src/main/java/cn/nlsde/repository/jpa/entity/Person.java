@@ -15,7 +15,7 @@ import java.util.Collection;
 @Data
 @Entity
 @NoArgsConstructor
-@EqualsAndHashCode(exclude = {"id"}, callSuper = false)
+@EqualsAndHashCode(exclude = {"id", "idCard"}, callSuper = false)
 public class Person extends BaseEntity {
 
     @Id
@@ -25,5 +25,8 @@ public class Person extends BaseEntity {
     private String userName;
     private String password;
 
+
+    @OneToOne(mappedBy = "person")
+    private IDCard idCard;
 
 }

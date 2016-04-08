@@ -18,7 +18,7 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-@EqualsAndHashCode(exclude = {"id", "addresses", "date"}, callSuper = false)
+@EqualsAndHashCode(exclude = {"id", "department", "date"}, callSuper = false)
 public class Employee extends BaseEntity {
     @Id
     @GeneratedValue(generator = "system-uuid")
@@ -36,8 +36,6 @@ public class Employee extends BaseEntity {
         date = new Date();
     }
 
-
-    @OneToMany(mappedBy = "employee")
-    private List<Address> addresses = new ArrayList<>();
-
+    @ManyToOne
+    private Department department;
 }

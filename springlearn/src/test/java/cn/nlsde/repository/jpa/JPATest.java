@@ -1,15 +1,15 @@
 package cn.nlsde.repository.jpa;
 
 import cn.nlsde.base.BaseTest;
-import cn.nlsde.repository.jpa.dao.EmployeeDAO;
-import cn.nlsde.repository.jpa.dao.UserDAO;
-import cn.nlsde.repository.jpa.entity.Address;
-import cn.nlsde.repository.jpa.entity.Employee;
+import cn.nlsde.repository.jpa.dao.*;
+import cn.nlsde.repository.jpa.entity.*;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by zwj on 2016/3/11.
@@ -22,6 +22,17 @@ public class JPATest extends BaseTest {
     @Autowired
     EmployeeDAO employeeDAO;
 
+    @Autowired
+    DepartmentDAO departmentDAO;
+
+    @Autowired
+    IDCardDAO idCardDAO;
+
+    @Autowired
+    PersonDAO personDAO;
+
+    @Autowired
+    CorporationUserDAO corporationUserDAO;
 
     @Test
     @Ignore
@@ -37,17 +48,69 @@ public class JPATest extends BaseTest {
         a2.setAddressCountry("南阳");
         a2.setAddressCity("南阳");
 
-        e.getAddresses().addAll(Arrays.asList(a1, a2));
-        employeeDAO.save(e);
+    }
 
+    @Test
+//    @Ignore
+    public void testmanytoOne() {
+        Employee e = new Employee();
+        e.setEmployeeName("张三");
+        Employee e1 = new Employee();
+        e1.setEmployeeName("as");
+        Department d = new Department();
+        d.setDepartmentName("rgz");
+        e.setDepartment(d);
+        e1.setDepartment(d);
+        departmentDAO.save(d);
+        employeeDAO.save(e);
+        employeeDAO.save(e1);
+        Set<Employee> es = new HashSet<>();
+        es.add(e);
+        es.add(e1);
+        d.setEmployees(es);
     }
 
     @Test
     @Ignore
-    public void del() {
-        employeeDAO.delete("d06e4e90-2647-4e63-b230-d8a5ded26822");
-
+    public void testdelete() {
+        employeeDAO.delete("797aaed2-8985-4bd3-9915-7a89d7778c75");
     }
 
+
+    @Test
+//    @Ignore
+    public void del() {
+        IDCard one = idCardDAO.findOne("94420089-7614-4a98-abb4-58bb59463325");
+    }
+
+    @Test
+    public void testonetoone() {
+        Person p = new Person();
+        p.setUserName("df");
+        IDCard id = new IDCard();
+        id.setCard("12312");
+        id.setPerson(p);
+        p.setIdCard(id);
+        personDAO.save(p);
+        idCardDAO.save(id);
+    }
+
+    @Test
+    public void testonetoon1e() {
+        User u = new User();
+        u.setUserName("user");
+        CorporationUser copU = new CorporationUser();
+        copU.setCopInfo("a");
+        copU.setUser(u);
+        userDAO.save(u);
+        corporationUserDAO.save(copU);
+    }
+
+    @Test
+    public void testUser() {
+        User u = new User();
+        u.setUserName("sdf");
+        userDAO.save(u);
+    }
 
 }

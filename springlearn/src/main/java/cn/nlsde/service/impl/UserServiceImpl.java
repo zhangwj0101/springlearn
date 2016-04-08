@@ -37,24 +37,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public void save() {
-        Employee e = new Employee();
-        e.setEmployeeName("张三");
-
-        Address a1 = new Address();
-        a1.setAddressCity("北京");
-        a1.setAddressCountry("北京");
-        a1.setEmployee(e);
-        Address a2 = new Address();
-        a2.setAddressCountry("南阳");
-        a2.setAddressCity("南阳");
-        a2.setEmployee(e);
-
-//        addressDAO.save(a1);
-//        addressDAO.save(a2);
-
-//        e.setAddresses(a1);
-        e.getAddresses().addAll(Arrays.asList(a1, a2));
-        employeeDAO.save(e);
+ 
     }
 
     public Employee get(String id) {

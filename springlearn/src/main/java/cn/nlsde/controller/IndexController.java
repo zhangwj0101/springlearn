@@ -1,6 +1,8 @@
 package cn.nlsde.controller;
 
 import cn.nlsde.annotation.FreeAccess;
+import cn.nlsde.annotation.LoginRequired;
+import cn.nlsde.annotation.PrivilegeRequired;
 import cn.nlsde.common.SessionBean;
 import cn.nlsde.constant.Constants;
 import cn.nlsde.privilege.Privilege;
@@ -27,12 +29,13 @@ import java.util.UUID;
  */
 @Controller
 @RequestMapping("/index")
+
 public class IndexController {
+
     Logger logger = LoggerFactory.getLogger(IndexController.class);
 
-//    @Inject
+    //    @Inject
 //    Logger logger;
-
     @Autowired
     UserService userService;
 
@@ -74,16 +77,12 @@ public class IndexController {
 
     @ResponseBody
     @RequestMapping("/get")
-    @FreeAccess
+    @PrivilegeRequired(privileges = {Privilege.USER_ADD, Privilege.USER_ALTER})
     public String get() {
 
         Employee employee = userService.get("e4802c4a-e99f-42d9-8922-9ffeb4c922a4");
-        List<Address> addresses = employee.getAddresses();
-        for (Address a : addresses) {
-            logger.info("{}", a.getAddressCity());
-        }
+
         return "get";
     }
-
 
 }

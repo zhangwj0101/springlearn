@@ -122,7 +122,7 @@ public class TestUserService extends BaseTest {
         a.setAddressCity("bj");
         Address a1 = new Address();
         a1.setAddressCity("bj1");
-        e.setAddresses(Arrays.asList(a, a1));
+       
         a.setEmployee(e);
         a1.setEmployee(e);
         employeeDAO.save(e);

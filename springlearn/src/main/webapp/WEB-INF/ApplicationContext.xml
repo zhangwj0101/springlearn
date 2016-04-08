@@ -22,7 +22,7 @@
     <context:property-placeholder location="classpath:repository.properties"/>
 
     <!--数据库配置-->
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSourceC3P0Adapter">
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSourceC3P0Adapter" >
         <property name="driverClass" value="${jdbc.driverClassName}"/>
         <property name="jdbcUrl" value="${jdbc.url}"/>
         <property name="user" value="${jdbc.username}"/>
