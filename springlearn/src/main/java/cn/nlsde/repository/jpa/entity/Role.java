@@ -49,7 +49,7 @@ public class Role extends BaseEntity {
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "RF_PRIVILEGE")
     @Enumerated(EnumType.STRING)
-    private Collection<Privilege> privileges;
+    private Collection<Privilege> privilege;
 
 }
 

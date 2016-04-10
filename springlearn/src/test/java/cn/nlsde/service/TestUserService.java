@@ -1,5 +1,6 @@
 package cn.nlsde.service;
 
+import cn.nlsde.aop.TestInter;
 import cn.nlsde.base.BaseTest;
 import cn.nlsde.privilege.Privilege;
 import cn.nlsde.repository.jpa.dao.AddressDAO;
@@ -44,6 +45,9 @@ public class TestUserService extends BaseTest {
     EmployeeDAO employeeDAO;
     @Autowired
     AddressDAO addressDAO;
+
+    @Autowired
+    TestInter test;
 
     @Autowired
     EntityManagerFactory entityManagerFactory;
@@ -91,14 +95,14 @@ public class TestUserService extends BaseTest {
 
         Role role = new Role();
         role.setName("test");
-        role.setPrivileges(Arrays.asList(Privilege.USER_ADD));
+        role.setPrivilege(Arrays.asList(Privilege.USER_ADD));
 
         Role role2 = new Role();
         role2.setName("test2");
-        role2.setPrivileges(Arrays.asList(Privilege.USER_ALTER));
+        role2.setPrivilege(Arrays.asList(Privilege.USER_ALTER));
         Role role3 = new Role();
         role3.setName("test3");
-        role3.setPrivileges(Arrays.asList(Privilege.USER_DELETE));
+        role3.setPrivilege(Arrays.asList(Privilege.USER_DELETE));
 
         user.setRoles(Arrays.asList(role, role2));
         user1.setRoles(Arrays.asList(role2, role3));
@@ -122,12 +126,17 @@ public class TestUserService extends BaseTest {
         a.setAddressCity("bj");
         Address a1 = new Address();
         a1.setAddressCity("bj1");
-       
+
         a.setEmployee(e);
         a1.setEmployee(e);
         employeeDAO.save(e);
         addressDAO.save(a);
         addressDAO.save(a1);
+    }
+
+    @Test
+    public void ts() {
+        test.sayhello();
     }
 
 }

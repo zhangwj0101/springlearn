@@ -1,6 +1,7 @@
 package cn.nlsde.repository.jpa;
 
 import cn.nlsde.base.BaseTest;
+import cn.nlsde.privilege.Privilege;
 import cn.nlsde.repository.jpa.dao.*;
 import cn.nlsde.repository.jpa.entity.*;
 import org.junit.Ignore;
@@ -111,6 +112,13 @@ public class JPATest extends BaseTest {
         User u = new User();
         u.setUserName("sdf");
         userDAO.save(u);
+    }
+
+    @Test
+    public void testRole() {
+        Role r = new Role();
+        r.setName("roles");
+        r.setPrivilege(Arrays.asList(Privilege.USER_ADD, Privilege.USER_ALTER));
     }
 
 }
